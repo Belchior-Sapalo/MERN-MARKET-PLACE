@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <header className='bg-slate-200 shadow-md'>
-        <div className='flex justify-between items-center max-w-6xl mx-auto h-14'>
+        <div className='flex justify-between items-center max-w-6xl mx-auto h-14 px-6'>
             <Link to="/">
                 <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
                     <span className='text-slate-500'>Bell</span>

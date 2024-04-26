@@ -15,6 +15,16 @@ mongoose.connect(process.env.MONGO).then(()=>{
     console.log(error)
 })
 
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Erro no servidor"
+    return res.status(statusCode).json({
+        sucesso: false,
+        statusCode,
+        message
+    })
+})
+
 app.listen(3000, ()=>{
     console.log('Servidor no ar')
 })

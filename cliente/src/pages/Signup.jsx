@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 
 export default function Signup() {
@@ -16,12 +16,9 @@ export default function Signup() {
     })
   }
 
-  console.log(formDate)
-
   async function handlerSubmit(e){
-    setError(null)
-    try {
-      e.preventDefault()
+    e.preventDefault()
+      setError(null)
       setLoading(true)
       const url = "/api/auth/signup"
       await fetch(url, {
@@ -33,16 +30,13 @@ export default function Signup() {
       }).then((res)=>res.json()).then((json)=>setRes(json));
 
       if(res.sucesso == false){
-        setError(res.message)
         setLoading(false)
+        setError(res.message)
         return;
       }
       setLoading(false)
       setError(null)
-    } catch (error) {
-      setLoading(false)
-      setError(error.message)
-    }
+
   }
 
 
